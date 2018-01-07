@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fbterm tmux battery git history colored-man-pages ssh-agent colorize sublime history-substring-search compleat debian)
+plugins=(battery git history colored-man-pages ssh-agent colorize history-substring-search compleat)
 
 source $ZSH/oh-my-zsh.sh
 
