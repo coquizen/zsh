@@ -1,14 +1,22 @@
 # If you come from bash you might have to change your $PATH.
+#
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+if [ -f ~/.zpath ]; then
+    source ~/.zpath
+else
+    print "WARNING: environment variables not set; ~/.zpath not found"
+fi
 
+#
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
+ZSH_THEME="spaceship"
+# Auto start tmux
+ZSH_TMUX_AUTOSTART=true
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -50,8 +58,18 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(battery git history colored-man-pages ssh-agent colorize history-substring-search compleat)
+#  wisely, as too many plugins slow down shell startup.
+plugins=(battery
+    git
+    history
+    colored-man-pages
+    ssh-agent
+    colorize
+    history-substring-search
+    compleat
+    zsh-syntax-highlighting
+    tmux
+    )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,6 +81,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
+#   ME
 #   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
@@ -82,3 +101,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias lstack="$HOME/.local/bin/./stack"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Setup Golang's workspace
+export GOPATH="$HOME/Developments/golang"
+
+# Colorize less
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 --quiet --force --style solarized-light"
+export LESS=" -R "
+alias less="less -m -X -g -i -J --underline-special"
+alias more="less"
+# Define the default editor
+export EDITOR="/usr/local/bin/nvim"
+# For use with Flatiron School's rspec wrapper
+alias flearn="learn --fast-fail"
+alias swift="PATH=/usr/bin:$PATH swift"
