@@ -1,21 +1,20 @@
 # vim: set syntax=zsh
 
-## Setup the go workspace environment
 #
-# Defines environment variables
-#
+# Defines PATH environment variable.
+# 
 # Author:
-#		Ian Canino <ian.canino@gmail.com>
+#		CaninoDev 
 #
 
 #
 # Specify the paths for executable files
 
-# Locally installed binaries#
+# Locally installed binaries
 PATH="$HOME/.local/bin:$PATH"
 
-# Haskell binaries
-PATH="$HOME/Library/Haskell/bin:$PATH"
+# ghcup binaries for Haskell
+PATH="$HOME/.cabal/bin:HOME/.ghcup/bin:$PATH"
 
 # Custom installed system-wide binaries
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -36,18 +35,10 @@ PATH="$PATH:$HOME/.nimble/bin"
 PATH="$PATH:$HOME/.npm-packages/bin"
 
 # Add the path for GoLang
-PATH="$PATH:$HOME/Developments/golang/bin"
+PATH="$PATH:$HOME/Developments/go/bin"
 
 # For python@2
 PATH="/usr/local/opt/python2/libexec/bin:$PATH"
+
 # Finally export $PATH
 export PATH
-# Add Go binaries
-#
-# Define the settings for zsh-syntax-highlighter
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
-
-# Customize 'less' with syntax highlighingg.
-
- #Set the $EDITOR
-
