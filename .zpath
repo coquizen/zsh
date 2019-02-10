@@ -2,9 +2,9 @@
 
 #
 # Defines PATH environment variable.
-# 
+#
 # Author:
-#		CaninoDev 
+#		CaninoDev
 #
 
 #
@@ -35,10 +35,13 @@ PATH="$PATH:$HOME/.nimble/bin"
 PATH="$PATH:$HOME/.npm-packages/bin"
 
 # Add the path for GoLang
-PATH="$PATH:$HOME/Developments/go/bin"
+PATH="$PATH:$HOME/Developments/Go/bin"
 
 # For python@2
-PATH="/usr/local/opt/python2/libexec/bin:$PATH"
-
+case `uname` in
+	 Darwin)
+	 PATH="/usr/local/opt/python2/libexec/bin:$PATH"
+	 ;;
+esac
 # Finally export $PATH
 export PATH
