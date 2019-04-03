@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias svim='sudo nvim'
+alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 
 # Run fortune
 /usr/bin/fortune -c
