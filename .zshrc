@@ -66,7 +66,8 @@ plugins=(
 	 git
 	 compleat
 	 history
-	 tmux)
+	 tmux
+	 )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,7 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -98,3 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+alias svim='sudo nvim'
+
+# Run fortune
+/usr/bin/fortune -c
