@@ -66,7 +66,6 @@ plugins=(
 	 git
 	 compleat
 	 history
-	 tmux
 	 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,7 +98,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+case `uname` in
+	Darwin)
+		source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		;;
+	Linux)
+		source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		;;
+esac
+
+
 alias svim='sudo nvim'
 alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 
