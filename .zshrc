@@ -102,15 +102,13 @@ source $ZSH/oh-my-zsh.sh
 case `uname` in
 	Darwin)
 		source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		/usr/local/bin/fortune
 		;;
 	Linux)
 		source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		/usr/bin/fortune
 		;;
 esac
-
-
-alias svim='sudo nvim'
+alias svim='SUDO_EDITOR=nvim sudo -e'
 alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 
-# Run fortune
-/usr/bin/fortune -c
