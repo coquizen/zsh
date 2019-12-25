@@ -66,39 +66,18 @@ plugins=(
 	 git
 	 compleat
 	 history
+	 history-substring-search	
+	 tmux
+	 colored-man
 	 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+############################
+## Start Up Applications ###
+############################
 case `uname` in
 	Darwin)
 		source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -109,6 +88,10 @@ case `uname` in
 		/usr/bin/fortune
 		;;
 esac
+
+###############	
+### Aliases ###
+###############
 alias svim='SUDO_EDITOR=nvim sudo -e'
 alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 
