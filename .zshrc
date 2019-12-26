@@ -66,9 +66,9 @@ plugins=(
 	 git
 	 compleat
 	 history
-	 history-substring-search	
+	 history-substring-search
 	 tmux
-	 colored-man
+	 colored-man-pages
 	 )
 
 source $ZSH/oh-my-zsh.sh
@@ -89,7 +89,7 @@ case `uname` in
 		;;
 esac
 
-###############	
+###############
 ### Aliases ###
 ###############
 alias svim='SUDO_EDITOR=nvim sudo -e'
