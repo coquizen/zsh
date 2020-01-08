@@ -69,3 +69,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# Set TERM
+export TERM=xterm-24bit
+# Set the mode timeout to be shorter
+export KEYTIMEOUT=1
