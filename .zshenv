@@ -57,19 +57,25 @@ if [[ "$EMBEDDED_TERMINAL" = true ]]; then
 else
 	 export ZSH_TMUX_AUTOSTART=true
 fi
+
 # Define the default editor
 export EDITOR=nvim
+
 # For NVM compatibility
 export NVM_SYMLINK_CURRENT=true
-# Set up ruby versioning environment
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-# Set up node versioning enviroment
-export NVM_DIR="$HOME/.nvm"
+# Change default location for nvm
+export NVM_DIR="$HOME/.local/share/nvm"
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export RVM_DIR="$HOME/.local/share/rvm"
+# Set up ruby versioning environment
+[[ -s "$RVM_DIR/rvm/scripts/rvm" ]] && source "$RVM_DIR/rvm/scripts/rvm"
+
 # Set TERM
 export TERM=xterm-24bit
-# Set the mode timeout to be shorter
+
+# Set the vi-mode timeout to be shorter
 export KEYTIMEOUT=1
