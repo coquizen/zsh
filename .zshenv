@@ -1,40 +1,40 @@
 # Universal enviroment
 # Specify the paths for executable files
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 ##############
 #### PATH ####
 ##############
 # Custom installed system-wide binaries
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Locally installed binaries
-PATH="$HOME/.local/bin:$PATH"
+PATH="$XDG_DATA_HOME\local/bin:$PATH"
 # Haskell via Cabal
-[[ -d "$HOME/.cabal/bin" ]] && PATH="$HOME/.cabal/bin:$PATH"
+[[ -d "$XDG_DATA_HOME\cabal/bin" ]] && PATH="$XDG_DATA_HOME\cabal/bin:$PATH"
 ## For local nodejs development
-PATH="$HOME/.local/share/npm_packages/bin:$PATH"
+PATH="$XDG_DATA_HOME\local/share/npm_packages/bin:$PATH"
 #Add RVM (ruby) for scripting.
-[[ -d "$HOME/.rvm/bin" ]] && PATH="$PATH:$HOME/.rvm/bin"
+[[ -d "$XDG_DATA_HOME\rvm/bin" ]] && PATH="$PATH:$XDG_DATA_HOME\rvm/bin"
 # Add Rust binaries
-[[ -d "$HOME/.cargo/bin" ]] && PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$XDG_DATA_HOME\cargo/bin" ]] && PATH="$XDG_DATA_HOME\cargo/bin:$PATH"
 # Add Nim binaries
-[[ -d "$HOME/.nimble/bin" ]] && PATH="$PATH:$HOME/.nimble/bin"
+[[ -d "$XDG_DATA_HOME\nimble/bin" ]] && PATH="$PATH:$XDG_DATA_HOME\nimble/bin"
 # Add the path for nodejs development
-[[ -d "$HOME/.npm-packages/bin" ]] && PATH="$PATH:$HOME/.npm-packages/bin"
-#
-#
+[[ -d "$XDG_DATA_HOME\npm-packages/bin" ]] && PATH="$PATH:$XDG_DATA_HOME\npm-packages/bin"
 # OS specific environment setup
 case `uname` in
 	 Darwin)
 		  # MacOS
 		  # For Golang
-		  GOPATH="$HOME/Developments/Projects/Software/Go"
+		  GOPATH="$HOME\Developments/Projects/Software/Go"
 		  export GOPATH
 		  PATH="/usr/local/opt/python2/libexec/bin:$PATH"
 	 ;;
 	 Linux)
 		  # Linux
 		  # Setup ghcup environment (Haskell)
-		  GOPATH="$HOME/Developments/Go"
+		  GOPATH="$HOME\Developments/Go"
 		  export GOPATH
 	 ;;
 esac
@@ -64,13 +64,13 @@ export EDITOR=nvim
 # For NVM compatibility
 export NVM_SYMLINK_CURRENT=true
 # Change default location for nvm
-export NVM_DIR="$HOME/.local/share/nvm"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export RVM_DIR="$HOME/.local/share/rvm"
+export RVM_DIR="$XDG_DATA_HOME/rvm"
 # Set up ruby versioning environment
 [[ -s "$RVM_DIR/rvm/scripts/rvm" ]] && source "$RVM_DIR/rvm/scripts/rvm"
 
