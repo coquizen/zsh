@@ -63,15 +63,16 @@ ZSH_THEME="half-life"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	 git
-	 compleat
-	 history
-	 history-substring-search
-	 tmux
-	 colored-man-pages
-	 vi-mode
-	 zsh-navigation-tools
-	 )
+	git
+	compleat
+	history
+	history-substring-search
+	tmux
+	colored-man-pages
+	vi-mode
+	ssh-agent
+	zsh-navigation-tools
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,12 +97,15 @@ esac
 ###############
 alias svim='SUDO_EDITOR=nvim sudo -e'
 alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
-
+alias ls='exa -l --git --extended --all'
+alias grep='grep --color=auto'
+alias mv='mv -i'
+alias rm='rm -i'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
 ###############
 #### Mode #####
 ###############
 bindkey -v
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
