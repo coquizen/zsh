@@ -37,20 +37,21 @@ export RVM_DIR="$XDG_DATA_HOME/rvm"
 
 # OS specific environment setup
 case `uname` in
-	 Darwin)
-		  # MacOS
-		  # For Golang
-		  GOPATH="$HOME\Developments/Projects/Software/Go"
-		  export GOPATH
-		  PATH="/usr/local/opt/python2/libexec/bin:$PATH"
-	 ;;
-	 Linux)
-		  # Linux
-		  # Setup ghcup environment (Haskell)
-		  GOPATH="$HOME/Developments/Software/Go"
-			PATH="$GOPATH/bin:$PATH"
-		  export GOPATH
-	 ;;
+	Darwin)
+		# MacOS
+		# For Golang
+		GOPATH="$HOME/Developments/Projects/Software/Go"
+		export GOPATH
+		PATH="/usr/local/libexec/bin:$PATH"
+		# disable insecure directory checking for zsh completions for oh-my-zsh
+		;;
+	Linux)
+		# Linux
+		# Setup ghcup environment (Haskell)
+		GOPATH="$HOME/Developments/Software/Go"
+		PATH="$GOPATH/bin:$PATH"
+		export GOPATH
+		;;
 esac
 #
 #
@@ -70,9 +71,9 @@ export ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 # Set up tmux to autostart on login if not an embedded terminal;
 # don't forget to inform JetBrains and VSCode to load this environment variable
 if [[ "$EMBEDDED_TERMINAL" = true ]]; then
-	 export ZSH_TMUX_AUTOSTART=false
+	export ZSH_TMUX_AUTOSTART=false
 else
-	 export ZSH_TMUX_AUTOSTART=true
+	export ZSH_TMUX_AUTOSTART=true
 fi
 
 # Define the default editor
@@ -92,3 +93,7 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
 # Set the properties file for Jetbrains's products
 export IDEA_PROPERTIES=$XDG_CONFIG_HOME/JetBrains/idea.properties
+
+# Set the gnupg home
+export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
+

@@ -75,7 +75,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 ############################
@@ -83,15 +82,14 @@ source $ZSH/oh-my-zsh.sh
 ############################
 case `uname` in
 	Darwin)
-		source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-		/usr/local/bin/fortune
+		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		;;
 	Linux)
 		source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-		/usr/bin/fortune
 		;;
 esac
 
+fortune
 ###############
 ### Aliases ###
 ###############
@@ -109,3 +107,4 @@ alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
 bindkey -v
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
