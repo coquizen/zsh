@@ -8,7 +8,7 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="half-life"
+ZSH_THEME="lambda-hostname"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,6 +66,7 @@ plugins=(
 	git
 	compleat
 	history
+	fzf
 	history-substring-search
 	tmux
 	colored-man-pages
@@ -101,10 +102,8 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
+alias firefox='/usr/bin/firefox-developer-edition'
 ###############
 #### Mode #####
 ###############
 bindkey -v
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
