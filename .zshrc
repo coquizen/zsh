@@ -8,7 +8,11 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="lambda-hostname"
+if [[ -n $SSH_CONNECTION ]]; then
+  ZSH_THEME="af-magic"
+else
+  ZSH_THEME="linuxonly"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,13 +70,15 @@ plugins=(
 	git
 	compleat
 	history
-	fzf
+	colorize
 	history-substring-search
 	tmux
 	colored-man-pages
 	vi-mode
 	ssh-agent
-	zsh-navigation-tools
+	ripgrep
+	yarn
+	fzf-xdg
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,13 +96,14 @@ case `uname` in
 		;;
 esac
 
-fortune
+fortune -a
 ###############
 ### Aliases ###
 ###############
 alias svim='SUDO_EDITOR=nvim sudo -e'
 alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 alias ls='exa -l --git --extended --all'
+alias lsg='exa -G'
 alias grep='grep --color=auto'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -107,3 +114,17 @@ alias firefox='/usr/bin/firefox-developer-edition'
 #### Mode #####
 ###############
 bindkey -v
+###############
+#### Init #####
+###############
+# Load node version manager
+[[ -s $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh
+# This loads nvm bash_completion
+[[ -s $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+# Load up completions for stripe
+[[ -s $XDG_CONFIG_HOME/stripe/stripe-completion.zsh ]] && fpath=($XDG_CONFIG_HOME/stripe $fpath) && autoload -Uz compinit && compinit -i
+# Load up the NIX development environment.
+[[ -s $HOME/.nix-profile/etc/profile.d/nix.sh ]] && . $HOME/.nix-profile/etc/profile.d/nix.sh
+## Load up fzf zsh autocompletion
+#[[ -s $FZF_BASE/shell/completion.zsh ]] && fpath=($FZF_BASE/shell/comletion.zsh $fpath) && autoload -Uz compinit && compinit -i
+#[[ -s $FZF_BASE/shell/key-bindings.zsh ]] && source $FZF_BASE/shell/key-bindings.zsh

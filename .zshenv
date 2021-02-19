@@ -18,16 +18,19 @@ PATH="$XDG_DATA_HOME/bin:$PATH"
 [[ -d "$XDG_DATA_HOME/cargo/bin" ]] && PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 # Add Nim binaries
 [[ -d "$XDG_DATA_HOME/nimble/bin" ]] && PATH="$PATH:$XDG_DATA_HOME/nimble/bin"
+# Add yarn installed global binaries
+[[ -d "$XDG_DATA_HOME/yarn/bin" ]] && PATH="$XDG_DATA_HOME/yarn/bin:$PATH"
 
-
+## Node Version Manager
 # For NVM compatibility
 export NVM_SYMLINK_CURRENT=true
 # Change default location for nvm
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-# This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+# Set an alternative for npm's npmrc to $XDG_CONFIG_HOME
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+## Ruby Version Manager
 # This sets up ruby versioning environment
 export RVM_DIR="$XDG_DATA_HOME/rvm"
 [[ -s "$RVM_DIR/rvm/scripts/rvm" ]] && source "$RVM_DIR/rvm/scripts/rvm"
@@ -65,12 +68,12 @@ export ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 if [[ "$EMBEDDED_TERMINAL" = true ]]; then
 	export ZSH_TMUX_AUTOSTART=false
 else
-	export ZSH_TMUX_AUTOSTART=true
+	export ZSH_TMUX_AUTOSTART=false
 fi
 # Define the default editor
-export EDITOR=nvim
+export EDITOR=/usr/bin/nvim
 # Set TERM
-if [ ! -z $KITTY_WINDOW_ID ]; then
+if [[ -v KITTY_WINDOW_ID ]]; then
 	export TERM=xterm-kitty
 else
 	export TERM=xterm-24bit
@@ -85,4 +88,7 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 export IDEA_PROPERTIES=$XDG_CONFIG_HOME/JetBrains/idea.properties
 # Set the gnupg home
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
-
+# Configure the syntax highlighting engine
+export ZSH_COLORIZE_TOOL=chroma
+#export ZSH_COLORIZE_CHROMA_FORMATTER=true-color
+if [ -e /home/caninodev/.nix-profile/etc/profile.d/nix.sh ]; then . /home/caninodev/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
