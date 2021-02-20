@@ -81,13 +81,12 @@ plugins=(
 	history
 	colorize
 	history-substring-search
-	tmux
 	colored-man-pages
 	vi-mode
 	ssh-agent
 	ripgrep
 	yarn
-	fzf-xdg
+	fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,7 +104,7 @@ case `uname` in
 		;;
 esac
 
-fortune -a
+fortune
 ###############
 ### Aliases ###
 ###############
