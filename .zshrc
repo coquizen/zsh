@@ -8,19 +8,17 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-if [[ -n $SSH_CONNECTION ]]; then
-  ZSH_THEME="af-magic"
-else
-  ZSH_THEME="linuxonly"
-fi
+#if [[ -n $SSH_CONNECTION ]]; then
+  #ZSH_THEME="af-magic"
+#else
+  #ZSH_THEME="linuxonly"
+#fi
+ZSH_THEME="sonicradish"
 
 
 # Setup zsh autocompletions compatibility under Homebrew
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
+	FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
 # Set list of themes to pick from when loading at random
@@ -89,6 +87,14 @@ plugins=(
 	fzf
 )
 
+case `uname` in
+	Darwin)
+		plugins+=(brew)
+		;;
+	Linux)
+		plugins+=(yay)
+		;;
+esac
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
@@ -118,6 +124,9 @@ alias rm='rm -i'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
 alias firefox='/usr/bin/firefox-developer-edition'
+alias msync='rsync -rlptzv --progress --delete --exclude=node_modules'
+alias pick_theme='cat ~/.zshrc | sed /ZSH_THEME/s/random/$($RANDOM_THEME)/g > ~/.zshrc'
+#alias randomize_theme='cat ~/.zshrc | sed /ZSH_THEME
 ###############
 #### Mode #####
 ###############
