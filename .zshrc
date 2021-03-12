@@ -92,7 +92,6 @@ case `uname` in
 		plugins+=(brew)
 		;;
 	Linux)
-		plugins+=(yay)
 		;;
 esac
 source $ZSH/oh-my-zsh.sh
