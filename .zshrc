@@ -8,12 +8,11 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#if [[ -n $SSH_CONNECTION ]]; then
-  #ZSH_THEME="af-magic"
-#else
-  #ZSH_THEME="linuxonly"
-#fi
-ZSH_THEME="sonicradish"
+if [[ -n $SSH_CONNECTION ]]; then
+	ZSH_THEME="sonicradish"
+else
+	ZSH_THEME="spaceship"
+fi
 
 
 # Setup zsh autocompletions compatibility under Homebrew
@@ -115,7 +114,8 @@ fortune
 ###############
 alias svim='SUDO_EDITOR=nvim sudo -e'
 alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
-alias ls='exa -l --git --extended --all'
+alias ls='exa -l --git --extended --all --group --header --long'
+alias sls='exa --across'
 alias lsg='exa -G'
 alias grep='grep --color=auto'
 alias mv='mv -i'
