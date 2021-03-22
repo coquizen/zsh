@@ -34,8 +34,6 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 # This sets up ruby versioning environment
 export RVM_DIR="$XDG_DATA_HOME/rvm"
 [[ -s "$RVM_DIR/rvm/scripts/rvm" ]] && source "$RVM_DIR/rvm/scripts/rvm"
-# This sets up go development environment
-[[ -d "$HOME/Developments/Go" ]] && export GOPATH="$HOME/Developments/Go" && PATH="$PATH:$GOPATH/bin"
 
 # OS specific environment setup
 case `uname` in
@@ -43,12 +41,21 @@ case `uname` in
 		# MacOS
 		# For Homebrew
 		PATH="/usr/local/libexec/bin:$PATH"
+		# Ensure that python@3's path is before MacOS's system's.
+		PATH="/usr/local/opt/python@3.9/libexec/bin:$PATH"
+		# For gnu-sed
+		[[ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]] && \
+			PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+		# Sets up Go development environment for vim-go
+		export GOPATH="$XDG_DATA_HOME/go"
+		export GOBIN="$XDG_DATA_HOME/go/bin"
+		PATH="$GOBIN:$PATH"
 		;;
 	Linux)
 		# Linux
-		  # Java path
-		  export JAVA_HOME="/usr/lib/jvm/default"
-	 ;;
+		# Java path
+		[[ -d "/usr/lib/jvm/default" ]] && export JAVA_HOME="/usr/lib/jvm/default"
+		;;
 esac
 #
 #
@@ -91,4 +98,4 @@ export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 # Configure the syntax highlighting engine
 export ZSH_COLORIZE_TOOL=chroma
 #export ZSH_COLORIZE_CHROMA_FORMATTER=true-color
-if [ -e /home/caninodev/.nix-profile/etc/profile.d/nix.sh ]; then . /home/caninodev/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+#if [ -e /home/caninodev/.nix-profile/etc/profile.d/nix.sh ]; then . /home/caninodev/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

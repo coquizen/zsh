@@ -74,8 +74,9 @@ fi
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	compleat
+	sudo
 	history
+	zsh-interactive-cd
 	colorize
 	history-substring-search
 	colored-man-pages
@@ -101,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 ############################
 case `uname` in
 	Darwin)
-		source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		[[ -d /usr/local/share/zsh-syntax-highlighting ]] && source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		;;
 	Linux)
 		source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -113,7 +114,6 @@ fortune
 ### Aliases ###
 ###############
 alias svim='SUDO_EDITOR=nvim sudo -e'
-alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 alias ls='exa -l --git --extended --all --group --header --long'
 alias sls='exa --across'
 alias lsg='exa -G'
@@ -122,9 +122,16 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
-alias firefox='/usr/bin/firefox-developer-edition'
 alias msync='rsync -rlptzv --progress --delete --exclude=node_modules'
 alias pick_theme='cat ~/.zshrc | sed /ZSH_THEME/s/random/$($RANDOM_THEME)/g > ~/.zshrc'
+
+case `uname` in
+	Darwin)
+		alias dev='cd $HOME/Documents/Developments'
+		;;
+	Linux)
+		alias dev="cd $HOME/Developments/Software"
+esac
 #alias randomize_theme='cat ~/.zshrc | sed /ZSH_THEME
 ###############
 #### Mode #####
@@ -140,7 +147,9 @@ bindkey -v
 # Load up completions for stripe
 [[ -s $XDG_CONFIG_HOME/stripe/stripe-completion.zsh ]] && fpath=($XDG_CONFIG_HOME/stripe $fpath) && autoload -Uz compinit && compinit -i
 # Load up the NIX development environment.
-[[ -s $HOME/.nix-profile/etc/profile.d/nix.sh ]] && . $HOME/.nix-profile/etc/profile.d/nix.sh
+#[[ -s $HOME/.nix-profile/etc/profile.d/nix.sh ]] && . $HOME/.nix-profile/etc/profile.d/nix.sh
 ## Load up fzf zsh autocompletion
 #[[ -s $FZF_BASE/shell/completion.zsh ]] && fpath=($FZF_BASE/shell/comletion.zsh $fpath) && autoload -Uz compinit && compinit -i
 #[[ -s $FZF_BASE/shell/key-bindings.zsh ]] && source $FZF_BASE/shell/key-bindings.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
