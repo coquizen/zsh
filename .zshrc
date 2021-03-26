@@ -11,7 +11,7 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 if [[ -n $SSH_CONNECTION ]]; then
 	ZSH_THEME="sonicradish"
 else
-	ZSH_THEME="spaceship"
+	ZSH_THEME="awesomepanda"
 fi
 
 
