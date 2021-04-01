@@ -21,6 +21,10 @@ PATH="$XDG_DATA_HOME/bin:$PATH"
 # Add yarn installed global binaries
 [[ -d "$XDG_DATA_HOME/yarn/bin" ]] && PATH="$XDG_DATA_HOME/yarn/bin:$PATH"
 
+## Rust environment setup
+export CARGO_HOME="$XDG_DATA_HOME/rust/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rust/multirust"
+
 ## Node Version Manager
 # For NVM compatibility
 export NVM_SYMLINK_CURRENT=true
@@ -47,12 +51,16 @@ case `uname` in
 		[[ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]] && \
 			PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 		# Sets up Go development environment for vim-go
-		export GOPATH="$XDG_DATA_HOME/go"
-		export GOBIN="$XDG_DATA_HOME/go/bin"
-		PATH="$GOBIN:$PATH"
+		#export GOPATH="$XDG_DATA_HOME/go"
+		#export GOBIN="$XDG_DATA_HOME/go/bin"
+		#PATH="$GOBIN:$PATH"
 		;;
 	Linux)
 		# Linux
+		# Sets up Go development environment
+		export GOPATH="$HOME/Developments/Software/Go"
+		export GOBIN="$GOPATH/bin"
+		PATH="$GOBIN:$PATH"
 		# Java path
 		[[ -d "/usr/lib/jvm/default" ]] && export JAVA_HOME="/usr/lib/jvm/default"
 		;;

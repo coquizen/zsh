@@ -11,7 +11,7 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 if [[ -n $SSH_CONNECTION ]]; then
 	ZSH_THEME="sonicradish"
 else
-	ZSH_THEME="awesomepanda"
+	ZSH_THEME="theunraveler"
 fi
 
 
@@ -84,7 +84,6 @@ plugins=(
 	ssh-agent
 	ripgrep
 	yarn
-	fzf
 )
 
 case `uname` in
@@ -149,7 +148,7 @@ bindkey -v
 # Load up the NIX development environment.
 #[[ -s $HOME/.nix-profile/etc/profile.d/nix.sh ]] && . $HOME/.nix-profile/etc/profile.d/nix.sh
 ## Load up fzf zsh autocompletion
-#[[ -s $FZF_BASE/shell/completion.zsh ]] && fpath=($FZF_BASE/shell/comletion.zsh $fpath) && autoload -Uz compinit && compinit -i
-#[[ -s $FZF_BASE/shell/key-bindings.zsh ]] && source $FZF_BASE/shell/key-bindings.zsh
+[[ -s $FZF_BASE/shell/completion.zsh ]] && fpath=($FZF_BASE/shell/completion.zsh $fpath) && autoload -Uz compinit && compinit -i
+[[ -s $FZF_BASE/shell/key-bindings.zsh ]] && source $FZF_BASE/shell/key-bindings.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
