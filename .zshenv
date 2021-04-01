@@ -15,7 +15,7 @@ PATH="$XDG_DATA_HOME/bin:$PATH"
 # Add RVM (ruby) for scripting
 [[ -d "$XDG_DATA_HOME/rvm/bin" ]] && PATH="$PATH:$XDG_DATA_HOME/rvm/bin"
 # Add Rust binaries
-[[ -d "$XDG_DATA_HOME/cargo/bin" ]] && PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
+[[ -d "$XDG_DATA_HOME/rust/cargo/bin" ]] && PATH="$XDG_DATA_HOME/rust/cargo/bin:$PATH"
 # Add Nim binaries
 [[ -d "$XDG_DATA_HOME/nimble/bin" ]] && PATH="$PATH:$XDG_DATA_HOME/nimble/bin"
 # Add yarn installed global binaries
