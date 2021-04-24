@@ -83,7 +83,7 @@ export ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 if [[ "$EMBEDDED_TERMINAL" = true ]]; then
 	export ZSH_TMUX_AUTOSTART=false
 else
-	export ZSH_TMUX_AUTOSTART=false
+	export ZSH_TMUX_AUTOSTART=true
 fi
 # Define the default editor
 export EDITOR=/usr/bin/nvim
@@ -109,3 +109,4 @@ export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 export ZSH_COLORIZE_TOOL=chroma
 #export ZSH_COLORIZE_CHROMA_FORMATTER=true-color
 #if [ -e /home/caninodev/.nix-profile/etc/profile.d/nix.sh ]; then . /home/caninodev/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export LESS='--no-init --quiet --ignore-case --RAW-CONTROL-CHARS'

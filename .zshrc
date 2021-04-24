@@ -91,6 +91,7 @@ case `uname` in
 		plugins+=(brew)
 		;;
 	Linux)
+		plugins+=(tmux)
 		;;
 esac
 source $ZSH/oh-my-zsh.sh
