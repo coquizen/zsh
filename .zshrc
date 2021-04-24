@@ -122,8 +122,7 @@ alias rm='rm -i'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
 alias msync='rsync -rlptzv --progress --delete --exclude=node_modules'
-alias pick_theme='cat ~/.zshrc | sed /ZSH_THEME/s/random/$($RANDOM_THEME)/g > ~/.zshrc'
-
+alias sshk='kitty +kitten ssh kronos'
 case `uname` in
 	Darwin)
 		alias dev='cd $HOME/Documents/Developments'
@@ -151,4 +150,3 @@ bindkey -v
 [[ -s $FZF_BASE/shell/completion.zsh ]] && fpath=($FZF_BASE/shell/completion.zsh $fpath) && autoload -Uz compinit && compinit -i
 [[ -s $FZF_BASE/shell/key-bindings.zsh ]] && source $FZF_BASE/shell/key-bindings.zsh
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
