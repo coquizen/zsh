@@ -98,6 +98,8 @@ export KEYTIMEOUT=1
 # Define fzf install base
 export FZF_BASE=$XDG_DATA_HOME/fzf
 # Set fzf default behavior
+[[ -e /usr/bin/fd ]] && FZF_DEFAULT_COMMAND='fd'
+[[ -e /usr/local/bin/fd ]] && FZF_DEFAULT_COMMMAND='fd'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 # Set the properties file for Jetbrains's products
 export IDEA_PROPERTIES=$XDG_CONFIG_HOME/JetBrains/idea.properties
