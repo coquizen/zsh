@@ -84,6 +84,7 @@ plugins=(
 	ssh-agent
 	ripgrep
 	yarn
+	fast-syntax-highlighting
 )
 
 case `uname` in
@@ -124,6 +125,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
 alias msync='rsync -rlptzv --progress --delete --exclude=node_modules'
 alias sshk='kitty +kitten ssh kronos'
+alias hgrep='history|grep'
 case `uname` in
 	Darwin)
 		alias dev='cd $HOME/Documents/Developments'
@@ -151,3 +153,5 @@ bindkey -v
 [[ -s $FZF_BASE/shell/completion.zsh ]] && fpath=($FZF_BASE/shell/completion.zsh $fpath) && autoload -Uz compinit && compinit -i
 [[ -s $FZF_BASE/shell/key-bindings.zsh ]] && source $FZF_BASE/shell/key-bindings.zsh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

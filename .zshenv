@@ -1,4 +1,5 @@
 # Universal enviroment
+#
 # Specify the paths for executable files
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -29,10 +30,10 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rust/multirust"
 # For NVM compatibility
 export NVM_SYMLINK_CURRENT=true
 # Change default location for nvm
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # Set an alternative for npm's npmrc to $XDG_CONFIG_HOME
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+# export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 ## Ruby Version Manager
 # This sets up ruby versioning environment
@@ -75,7 +76,7 @@ export PATH
 ##  APP ENV  ##
 ###############
 # Define the settings for zsh-syntax-highlighter
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root cursor)
+#export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root cursor)
 # Let oh-my-zsh's tmux's plugin that the config file is stored elsewhere
 export ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 # Set up tmux to autostart on login if not an embedded terminal;
@@ -83,7 +84,7 @@ export ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 if [[ "$EMBEDDED_TERMINAL" = true ]]; then
 	export ZSH_TMUX_AUTOSTART=false
 else
-	export ZSH_TMUX_AUTOSTART=true
+	export ZSH_TMUX_AUTOSTART=false
 fi
 # Define the default editor
 export EDITOR=/usr/bin/nvim
@@ -101,12 +102,14 @@ export FZF_BASE=$XDG_DATA_HOME/fzf
 [[ -e /usr/bin/fd ]] && FZF_DEFAULT_COMMAND='fd'
 [[ -e /usr/local/bin/fd ]] && FZF_DEFAULT_COMMMAND='fd'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+#
 # Set the properties file for Jetbrains's products
 export IDEA_PROPERTIES=$XDG_CONFIG_HOME/JetBrains/idea.properties
+#
 # Set the gnupg home
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
+#
 # Configure the syntax highlighting engine
 export ZSH_COLORIZE_TOOL=chroma
-#export ZSH_COLORIZE_CHROMA_FORMATTER=true-color
-#if [ -e /home/caninodev/.nix-profile/etc/profile.d/nix.sh ]; then . /home/caninodev/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+#j
 export LESS='--no-init --quiet --ignore-case --RAW-CONTROL-CHARS'
