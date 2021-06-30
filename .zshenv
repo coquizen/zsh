@@ -52,9 +52,9 @@ case `uname` in
 		[[ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]] && \
 			PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 		# Sets up Go development environment for vim-go
-		#export GOPATH="$XDG_DATA_HOME/go"
-		#export GOBIN="$XDG_DATA_HOME/go/bin"
-		#PATH="$GOBIN:$PATH"
+		export GOPATH="$XDG_DATA_HOME/go"
+		export GOBIN="$XDG_DATA_HOME/go/bin"
+		PATH="$GOBIN:$PATH"
 		;;
 	Linux)
 		# Linux
